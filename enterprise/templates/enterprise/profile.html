@@ -1,0 +1,80 @@
+{% extends 'enterprise/enterprise_base.html' %}
+
+{% block title %}Enterprise|Profile{% endblock title %}
+
+{% block body %}
+{% if messages %}
+    <div>
+        {% for message in messages %}
+        <div class="alert alert-warning">
+            <a class="close" href="#" data-dismiss="alert">×</a>
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+<div class="container profile">
+    <hr>
+	<div class="row">
+      <div class="col-md-3">
+        <div class="formerror">  
+          {{form.enterprise_photo.errors.as_text}}
+         </div>
+        <div class="text-center">
+            <img src="/uploads/{{form.enterprise_photo.value}}" alt="" class="rounded-circle" width="200px" height="200px" >
+        </div>
+      </div>
+    
+   
+      <div class="col-md-9 personal-info">
+        <h3>Personal info</h3>
+        
+        <form class="form-horizontal" enctype="multipart/form-data" method="POST">
+          {% csrf_token %}
+    
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Name:</label>
+            <div class="col-lg-8">
+                 {{form.enterprise_name}}
+            </div>
+          </div>
+          <div class="form-group">
+              <label class="col-lg-3 control-label">Email:</label>
+              <div class="formerror">  
+               {{form.enterprise_email.errors.as_text}}
+              </div>
+              <div class="col-lg-8">
+                  {{form.enterprise_email}}
+              </div>
+         </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label">Contact:</label>
+             <div class="formerror">  
+               {{form.enterprise_contact.errors.as_text}}
+              </div>
+            <div class="col-md-8">
+             {{form.enterprise_contact}}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label">Image:</label>
+            <div class="col-md-8">
+             {{form.enterprise_photo}}
+            </div>
+          </div> 
+          <div class="form-group">
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-8">
+              <input type="submit" class="btn btn-primary" value="Save Changes">
+              <a href="{% url 'profile_enterprise_change_password' %}" class="btn btn-primary"> Change Password</a>
+            </div>
+          </div>
+        </form>
+      </div>
+  </div>
+</div>
+<hr>
+
+
+{% endblock body %}

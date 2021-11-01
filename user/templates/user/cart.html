@@ -1,0 +1,189 @@
+{% extends 'user/user_base.html' %}
+{% block title %}Cart{% endblock title %}
+{% load static %}
+{% load tagger %}
+{% block body %}
+
+  <!--Body Content-->
+<div id="page-content">
+   <!--Page Title-->
+   <div class="page section-header text-center">
+     <div class="page-title">
+          <div class="wrapper"><h1 class="page-width">Your cart</h1></div>
+        </div>
+  </div>
+    <!--End Page Title-->
+
+    {% if messages %}
+      <div>
+        {% for message in messages %}
+        <div class="alert {% if message.level == 25 %}alert-success {% else %}alert-danger {% endif %} m-2">
+          <a class="close" href="#" data-dismiss="alert">×</a>
+          {{ message }}
+        </div>
+        {% endfor %}
+      </div>
+	{% endif %}
+
+  {% if cart_item %}
+    <div class="container">
+       <div class="row">
+            <div class="col-12 col-sm-12 col-md-8 col-lg-8 main-col">
+                  <table>
+                        <thead class="cart__row cart__header">
+                            <tr>
+                                <th class="text-center">Product</th>
+                                <th class="text-center">Price</th>
+                                <th class="text-center">Quantity</th>
+                                <th class="text-right">Total</th>
+                                <th class="action">&nbsp;</th>
+                            </tr>
+                        </thead>
+                      <tbody>
+                         {% for cart in cart_item %}
+                            <tr class="cart__row border-bottom line1 cart-flex border-top">
+                                <td class="cart__image-wrapper cart-flex-item">
+                                    <a href="{% url 'product_detail' cart.product_items|private:'_id' %}"><img class="cart__image" src="{{cart.product_items.product_img.url}}" ></a>
+                                </td>
+                                <td class="cart__meta small--text-left cart-flex-item">
+                                    <div class="list-view-item__title">
+                                        <a>{{cart.product_items.product_name}}</a>
+                                    </div>
+                                </td>
+                                <td class="cart__price-wrapper cart-flex-item">
+                                    <span class="money">&#8377 {{cart.product_items.Price}}/~</span>
+                                </td>
+                                <td class="cart__update-wrapper cart-flex-item text-right">
+                                    <div class="cart__qty text-center">
+                                        <div class="qtyField">
+                                          <form method = "POST">
+                                             {% csrf_token %}
+                                          <input type="hidden" name="product_id" value="{{cart.product_items|private:'_id'}}">
+                                           <select name="selected_qty" onchange="this.form.submit()" class="cart-item-select">
+                                             <option {% if cart.qty == 1 %}selected{% endif %} value=1> 1 </option>
+                                             <option {% if cart.qty == 2 %}selected{% endif %} value=2> 2 </option>
+                                             <option {% if cart.qty == 3 %}selected{% endif %} value=3> 3 </option>
+                                             <option {% if cart.qty == 4 %}selected{% endif %} value=4> 4 </option>
+                                             <option {% if cart.qty == 5 %}selected{% endif %} value=5> 5 </option>
+                                             <option {% if cart.qty == 6 %}selected{% endif %} value=6> 6 </option>
+                                             <option {% if cart.qty == 7 %}selected{% endif %} value=7> 7 </option>
+                                             <option {% if cart.qty == 8 %}selected{% endif %} value=8> 8 </option>
+                                             <option {% if cart.qty == 9 %}selected{% endif %} value=9> 9 </option>
+                                             <option {% if cart.qty == 10 %}selected{% endif %} value=10> 10 </option>
+                                             <option {% if cart.qty == 11 %}selected{% endif %} value=11> 11 </option>
+                                             <option {% if cart.qty == 12 %}selected{% endif %} value=12> 12 </option>
+                                             <option {% if cart.qty == 13 %}selected{% endif %} value=13> 13 </option>
+                                             <option {% if cart.qty == 14 %}selected{% endif %} value=14> 14 </option>
+                                             <option {% if cart.qty == 15 %}selected{% endif %} value=15> 15 </option>
+                                             <option {% if cart.qty == 16 %}selected{% endif %} value=16> 16 </option>
+                                             <option {% if cart.qty == 17 %}selected{% endif %} value=17> 17 </option>
+                                             <option {% if cart.qty == 18 %}selected{% endif %} value=18> 18 </option>
+                                             <option {% if cart.qty == 19 %}selected{% endif %} value=19> 19 </option>
+                                             <option {% if cart.qty == 20 %}selected{% endif %} value=20> 20 </option>
+                                             <option {% if cart.qty == 21 %}selected{% endif %} value=21> 21 </option>
+                                             <option {% if cart.qty == 22 %}selected{% endif %} value=22> 22 </option>
+                                             <option {% if cart.qty == 23 %}selected{% endif %} value=23> 23 </option>
+                                             <option {% if cart.qty == 24 %}selected{% endif %} value=24> 24 </option>
+                                             <option {% if cart.qty == 25 %}selected{% endif %} value=25> 25 </option>
+                                             <option {% if cart.qty == 26 %}selected{% endif %} value=26> 26 </option>
+                                             <option {% if cart.qty == 27 %}selected{% endif %} value=27> 27 </option>
+                                             <option {% if cart.qty == 28 %}selected{% endif %} value=28> 28 </option>
+                                             <option {% if cart.qty == 29 %}selected{% endif %} value=29> 29 </option>
+                                             <option {% if cart.qty == 30 %}selected{% endif %} value=30> 30 </option>
+                                             <option {% if cart.qty == 31 %}selected{% endif %} value=31> 31 </option>
+                                             <option {% if cart.qty == 32 %}selected{% endif %} value=32> 32 </option>
+                                             <option {% if cart.qty == 33 %}selected{% endif %} value=33> 33 </option>
+                                             <option {% if cart.qty == 34 %}selected{% endif %} value=34> 34 </option>
+                                             <option {% if cart.qty == 35 %}selected{% endif %} value=35> 35 </option>
+                                             <option {% if cart.qty == 36 %}selected{% endif %} value=36> 36 </option>
+                                             <option {% if cart.qty == 37 %}selected{% endif %} value=37> 37 </option>
+                                             <option {% if cart.qty == 38 %}selected{% endif %} value=38> 38 </option>
+                                             <option {% if cart.qty == 39 %}selected{% endif %} value=39> 39 </option>
+                                             <option {% if cart.qty == 40 %}selected{% endif %} value=40> 40 </option>
+                                             <option {% if cart.qty == 41 %}selected{% endif %} value=41> 41 </option>
+                                             <option {% if cart.qty == 42 %}selected{% endif %} value=42> 42 </option>
+                                             <option {% if cart.qty == 43 %}selected{% endif %} value=43> 43 </option>
+                                             <option {% if cart.qty == 44 %}selected{% endif %} value=44> 44 </option>
+                                             <option {% if cart.qty == 45 %}selected{% endif %} value=45> 45 </option>
+                                             <option {% if cart.qty == 46 %}selected{% endif %} value=46> 46 </option>
+                                             <option {% if cart.qty == 47 %}selected{% endif %} value=47> 47 </option>
+                                             <option {% if cart.qty == 48 %}selected{% endif %} value=48> 48 </option>
+                                             <option {% if cart.qty == 49 %}selected{% endif %} value=49> 49 </option>
+                                             <option {% if cart.qty == 50 %}selected{% endif %} value=50> 50 </option>
+                                          </select>
+                                         
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-right small--hide cart-price">
+                                    <div><span class="money">&#8377  {% widthratio cart.qty 1 cart.product_items.Price %}/~</span></div>
+                                </td>
+                                <td class="text-center small--hide"><a href="{% url 'remove_from_cart' cart|private:'_id' %}" class="cart__remove"><h3 class="mt-2"><i class="icon icon anm anm-times-l"></i></h3></a></td>
+                            </tr>
+                           </form>  
+                        {% endfor %}
+                        </tbody>
+                      <tfoot>
+                            <tr>
+                                <td colspan="3" class="text-left"><a href="{% url 'index' %}" class="btn--link cart-continue"><i class="icon icon-arrow-circle-left"></i> Continue shopping</a></td> 
+                            </tr>
+                        </tfoot>
+                </table>
+                 
+              </div>
+            <div class="col-12 col-sm-12 col-md-4 col-lg-4 cart__footer">
+                <div class="solid-border">
+                  <div class="row">
+                     <span class="col-12 col-sm-6 cart__subtotal-title"><strong>Subtotal</strong></span>
+                    <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">&#8377   {{sub_total}}/~</span></span>
+                  </div>
+                  <div class="cart__shipping">Shipping &amp; taxes calculated at checkout</div>
+                  <form method="GET" action="{% url 'place_order' slug='cart' %}">
+                     {% csrf_token %}
+                    <input type="submit" name="checkout_btn" id="cartCheckout" class="btn btn--small-wide checkout" value="Checkout">
+                    <div class="paymnet-img"><img src="{% static 'assets/images/payment-img.jpg' %}" alt="Payment"></div>
+                  </form> 
+               </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="pagination">
+      {% if cart_item.has_other_pages %}
+      <ul >
+         {% if cart_item.has_previous %}
+         <li><a href="?page={{ products.previous_page_number }}">&laquo;</a></li>
+         {% else %}
+         <li class="disabled"><span>&laquo;</span></li>
+         {% endif %}
+         {% for i in cart_item.paginator.page_range %}
+         {% if cart_item.number == i %}
+         <li class="active"><span>{{ i }} <span class=""></span></span></li>
+         {% else %}
+         <li><a href="?page={{ i }}">{{ i }}</a></li>
+         {% endif %}
+         {% endfor %}
+         {% if cart_item.has_next %}
+         <li><a href="?page={{ products.next_page_number }}">&raquo;</a></li>
+         {% else %}
+         <li class="disabled"><span>&raquo;</span></li>
+         {% endif %}
+      </ul>
+      {% endif %}
+   </div>
+
+   {% else %}
+    <div class="success-box">
+        <h5>No Item In Cart</h5>
+        <a href="{% url 'index' %}" class="btn--link cart-continue"><i class="icon icon-arrow-circle-left"></i> Continue shopping</a>
+    </div>
+  {% endif %}	
+
+
+
+</div>
+<!--End Body Content-->
+
+
+{% endblock body%}
