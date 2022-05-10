@@ -2,7 +2,7 @@
 
 This E-Commerece Project gives general glimes of commerical shopping site where a user can make purchase of his/her requirements under different categories, can view thier purchase history and order status while they can also add products to their carts for later purchase.
 
-# Tutotial Video Links
+# Tutorial Video Links
 
 - [Admin-Panel](https://www.dropbox.com/s/kn9bpkn4ns7k6mf/admin%20panel%20recording.webm?dl=0)
 
